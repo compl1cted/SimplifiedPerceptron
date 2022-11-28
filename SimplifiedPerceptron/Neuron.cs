@@ -1,32 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimplifiedPerceptron
+﻿namespace SimplifiedPerceptron
 {
     internal class Neuron
     {
-        int Activation = 0;
-        int Treshold = 5;
-        int[] Weights;
+        private readonly int Treshold;
+        public readonly int[] Weights;
 
-        Neuron(int ConnectionsAmount, int _Treshold)
+        public Neuron(int _ConnectionsAmount, int _Treshold)
         {
-            Weights = new int[ConnectionsAmount];
+            Weights = new int[_ConnectionsAmount];
             Treshold = _Treshold;
-
             for (int i = 0; i < Weights.Length; i++)
-            {
-                Weights[i] = i;
-            }
+                Weights[i] = 0;
         }
 
-        public int ActivationFunction(int Value)
+        public bool ActivationFunction(int[] Value)
         {
-            Activation = Value > Treshold ? 1 : 0;
-            return Activation;
+            return WeightedSum(Value) > Treshold;
         }
 
         public int WeightedSum(int[] Input)
@@ -39,37 +28,19 @@ namespace SimplifiedPerceptron
             return WeightedSum;
         }
 
-        public void Train(int Value)
+        public void Train(int[] Input)
         {
-            bool IsTrained = false;
-            while(!IsTrained)
+            while(true)
             {
-
-                for (int i = 0; i < 10; i++)
-                {
-                    int Result = ActivationFunction(i);
-
-                    if (Result == 1 && i != Value)
-                    {
-                        CorrectWeights(i, -1);
-                        IsTrained = true;
-                    }
-
-                    if (Result == 0 && i == Value)
-                    {
-                        CorrectWeights(i, 1);
-                        IsTrained = true;
-                    }
-                }
+                if (ActivationFunction(Input) == false)
+                    CorrectWeights(Input, 1);
+                else break;
             }
         }
         public void CorrectWeights(int[] inputs, int editor)
         {
             for (int i = 0; i < Weights.Length; i++)
-            {
-                if (inputs[i] == 1)
-                    Weights[i] = Weights[i] + editor;
-            }
+                if (inputs[i] == 1) Weights[i] += editor;
         }
     }
 }
