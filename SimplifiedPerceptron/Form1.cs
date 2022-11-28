@@ -30,7 +30,7 @@ namespace SimplifiedPerceptron
         {
             if (NumberInput.Text == null)
             {
-                OutputLabel.Text = "Input can't be empty!";
+                TopLabel.Text = "Input can't be empty!";
                 return;
             }
             CurrentNumber.Text = NumberInput.Text;
