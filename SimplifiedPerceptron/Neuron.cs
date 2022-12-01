@@ -22,9 +22,7 @@
         {
             int WeightedSum = 0;
             for (int i = 0; i < Input.Length; i++)
-            {
                 WeightedSum += Input[i] * Weights[i];
-            }
             return WeightedSum;
         }
 
@@ -37,10 +35,10 @@
                 else break;
             }
         }
-        public void CorrectWeights(int[] inputs, int editor)
+        public void CorrectWeights(int[] Inputs, int Editor)
         {
             for (int i = 0; i < Weights.Length; i++)
-                if (inputs[i] == 1) Weights[i] += editor;
+                if (Inputs[i] == 1) Weights[i] += Editor;
         }
     }
 }

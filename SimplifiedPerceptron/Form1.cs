@@ -1,5 +1,3 @@
-using System.Diagnostics;
-
 namespace SimplifiedPerceptron
 {
     public partial class Form1 : Form
@@ -41,7 +39,7 @@ namespace SimplifiedPerceptron
         {
             Button? Button = sender as Button;
             if (Button == null) return;
-            Button.BackColor = Button.BackColor == Color.White ? Color.Black : Color.White;
+            Button.BackColor = Button.BackColor != Color.Black ? Color.Black : Color.White;
         }
 
         private int[] GetMatrixValues()
