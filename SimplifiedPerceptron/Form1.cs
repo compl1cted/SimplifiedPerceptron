@@ -46,11 +46,11 @@ namespace SimplifiedPerceptron
         {
             int Counter = 0;
             int[] MatrixValues = new int[MatrixColumns * MatrixRows];
-            for (int i = 0; i < MatrixColumns; i++)
+            for (int i = 0; i < MatrixRows; i++)
             {
-                for (int j = 0; j < MatrixRows; j++)
+                for (int j = 0; j < MatrixColumns; j++)
                 {
-                    MatrixValues[Counter] = ButtonMatrix[i, j].BackColor == Color.Black ? 1 : 0;
+                    MatrixValues[Counter] = ButtonMatrix[j, i].BackColor == Color.Black ? 1 : 0;
                     Counter++;
                 }
             }

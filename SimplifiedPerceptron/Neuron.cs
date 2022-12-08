@@ -30,9 +30,8 @@
         {
             while(true)
             {
-                if (ActivationFunction(Input) == false)
-                    CorrectWeights(Input, 1);
-                else break;
+                if (ActivationFunction(Input) == true) break;
+                CorrectWeights(Input, 1);
             }
         }
         public void CorrectWeights(int[] Inputs, int Editor)
